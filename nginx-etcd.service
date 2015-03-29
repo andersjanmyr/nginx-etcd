@@ -1,0 +1,27 @@
+[Unit]
+Description=Nginx service that listens to Etcd /docker
+Requires=docker.service
+After=docker.service
+Requires=etcd.service
+After=etcd.service
+
+[Service]
+User=core
+TimeoutStartSec=0
+KillMode=none
+ExecStartPre=-/usr/bin/docker kill nginx-etcd
+ExecStartPre=-/usr/bin/docker rm nginx-etcd
+ExecStartPre=/usr/bin/docker pull andersjanmyr/nginx-etcd
+ExecStart=/usr/bin/sh -c \
+'/usr/bin/docker run \
+--restart=always \
+--name nginx-etcd \
+-p 80:80 \
+-p 443:443 \
+-e NODE_ENV=172.17.42.1:4001,10.1.42.1:4001 \
+andersjanmyr/nginx-etcd'
+ExecStop=-/usr/bin/docker stop nginx-etcd
+
+[X-Fleet]
+Conflicts=nginx*
+
