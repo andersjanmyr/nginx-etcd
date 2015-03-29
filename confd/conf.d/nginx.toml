@@ -7,5 +7,5 @@ dest = "/etc/nginx/sites-enabled/nginx.conf"
 keys = [ "/docker/machines" ]
 owner = "root"
 mode = "0644"
-# check_cmd = "/usr/sbin/nginx -t"
-reload_cmd = "/usr/sbin/service nginx reload"
+check_cmd = "/usr/local/sbin/nginx -t"
+reload_cmd = "/usr/local/sbin/nginx -s reload"
