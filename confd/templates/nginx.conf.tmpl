@@ -1,8 +1,3 @@
-events {
-  worker_connections  4096;  ## Default: 1024
-}
-
-http {
 {{ range $machine := lsdir "/docker/machines/" }}
 {{/* $machineInfo := json (printf "%s%s%s" "/docker/machines/" . "/info" | getv) */}}
 {{ range (printf "%s%s%s" "/docker/machines/" $machine "/containers/*" | getvs) }}
@@ -71,5 +66,4 @@ server {
 {{ end }}
 {{ end }}
 {{ end }}
-}
 }
