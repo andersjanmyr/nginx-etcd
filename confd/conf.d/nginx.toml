@@ -1,0 +1,11 @@
+[template]
+
+src = "nginx.conf.tmpl"
+dest = "/etc/nginx/sites-enabled/nginx.conf"
+# dest = "tmp/nginx.conf"
+# prefix = "/docker/machines"
+keys = [ "/docker/machines" ]
+owner = "root"
+mode = "0644"
+check_cmd = "/usr/sbin/nginx -t"
+reload_cmd = "/usr/sbin/service nginx reload"

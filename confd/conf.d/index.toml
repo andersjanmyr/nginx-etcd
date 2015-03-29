@@ -1,0 +1,8 @@
+[template]
+
+src = "index.html.tmpl"
+dest = "/usr/share/nginx/html/index.html"
+# dest = "tmp/index.html"
+keys = [ "/docker/machines" ]
+owner = "root"
+mode = "0644"

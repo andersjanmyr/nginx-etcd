@@ -1,0 +1,23 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <ul>
+{{ range $machine := lsdir "/docker/machines/" }}
+{{/* $machineInfo := json (printf "%s%s%s" "/docker/machines/" . "/info" | getv) */}}
+{{ range (printf "%s%s%s" "/docker/machines/" $machine "/containers/*" | getvs) }}
+{{ $c := json . }}
+{{ $webPortMapping := index $c.NetworkSettings.Ports "80/tcp" }}
+{{ if $webPortMapping }}
+{{ $port := (index $webPortMapping 0).HostPort }}
+<li>
+  <a href="{{$machine}}:{{$port}}">{{base $c.Name}}</a>
+</li>
+{{ else }}
+<li>{{base $c.Name}}</li>
+{{ end }}
+{{ end }}
+{{ end }}
+</ul>
+  </body>
+</html>
