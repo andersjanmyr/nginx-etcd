@@ -18,7 +18,6 @@ ExecStart=/usr/bin/sh -c \
 --name nginx-etcd \
 -p 80:80 \
 -p 443:443 \
--e CONFD_NODE=172.17.42.1:4001,10.1.42.1:4001 \
 andersjanmyr/nginx-etcd'
 ExecStop=-/usr/bin/docker stop nginx-etcd
 
