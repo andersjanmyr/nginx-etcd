@@ -34,6 +34,7 @@ http {
 {{ $webPortMapping := index $c.NetworkSettings.Ports "80/tcp" }}
 {{ if $webPortMapping }}
 {{ $port := (index $webPortMapping 0).HostPort }}
+# {{ $c.Id }}
 upstream {{base $c.Name}} {
     server {{ $machine }}:{{$port}};
 }
