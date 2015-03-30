@@ -28,13 +28,13 @@
       background: darkgray;
     }
     a, a:visited {
-      color: white;
+      color: lime;
     }
     a:hover {
       color: blue;
     }
     a:active {
-      color: green;
+      color: cyan;
     }
   </style>
   </head>
@@ -48,7 +48,7 @@
 {{ if $webPortMapping }}
 {{ $port := (index $webPortMapping 0).HostPort }}
 <li>
-  <a href="{{$machine}}:{{$port}}">{{base $c.Name}}</a>
+  <a href="http://{{$machine}}:{{$port}}">{{base $c.Name}}</a>
 </li>
 {{ else }}
 <li>{{base $c.Name}}</li>
