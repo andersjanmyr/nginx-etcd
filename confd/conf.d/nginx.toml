@@ -1,7 +1,7 @@
 [template]
 
 src = "nginx.conf.tmpl"
-dest = "/etc/nginx/conf.d/nginx.conf"
+dest = "/etc/nginx.conf"
 # dest = "tmp/nginx.conf"
 # prefix = "/docker/machines"
 keys = [ "/docker/machines" ]
